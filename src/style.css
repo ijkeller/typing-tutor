@@ -1,0 +1,146 @@
+*, 
+*::before, 
+*::after {
+    box-sizing: border-box;
+    list-style: none;
+    --var-key-height: 3px 3px;
+}
+
+*:focus {
+    outline: none;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 99vw;
+    height: 99vh;
+    overflow: hidden;
+    padding: auto;
+    --var-gradient: linear-gradient(
+        45deg, 
+        #845ec2,
+        #d65db1,
+        #ff6f91,
+        #ff9671,
+        #ffc75f,
+        #f9f871
+        );
+}
+
+.text-container,
+.keyboard-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(89, 89, 89);
+    border-radius: 10px;
+    padding: 10px;
+    width: 95%;
+    max-width: 1250px;
+    min-width: 900px;
+    height: 35vw;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+}
+
+.keyboard-container {
+    min-height: 350px;
+}
+
+.text-container {
+    height: 20vw;
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.text-box {
+    width: 98%;
+    height: 95%;
+    border: none;
+    resize: none;
+    font-size: 1.5rem;
+    overflow-y: auto;
+    overflow-wrap: break-word;
+}
+
+.keyboard {
+    width: 99%;
+    height: 99%;
+    border: 2px solid rgb(89, 89, 89);
+    border-radius: 10px;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: none;
+    grid-template-rows: 5;
+    background-color: rgb(104, 104, 104);
+}
+
+.rows {
+    padding: 0;
+    margin: 5px;
+}
+
+ul {
+  list-style-type: none;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+li {
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    background-color: rgba(255, 255, 255, .2);
+    box-shadow: var(--var-key-height) 5px;
+    border-radius: 4px;
+    margin:1px;
+    text-align: center;
+    width: 5%;
+    transition: opacity 250ms ease-in-out,
+                box-shadow 250ms ease-in-out,
+                transform 250ms ease-in-out;
+}
+
+.row-5 {
+    display: flex;
+    justify-content: center;
+}
+
+li:hover,
+.pressed {
+    opacity: .8;
+    box-shadow: none;
+    transform: translate(var(--var-key-height))
+}
+
+.space {
+    width: 40%;
+    padding: .5rem;
+}
+
+.alt, .ctrl, .back, .shift {
+    width: 12.5%;
+}
+
+.tab, .or {
+    width: 8%;
+}
+
+.caps, .enter {
+    width: 10%;
+}
+
+.caps, .back {
+    font-size: 1.25rem;
+}
+
