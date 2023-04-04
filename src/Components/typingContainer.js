@@ -17,7 +17,7 @@ function TypingContainer() {
     const snippetObject = currentSnippet.split('')
 
 
-    // display snippet in seperate spans
+    // display snippet in separate spans
     const displaySnippet = snippetObject.map((snippet, index) => (
         <Span
             userInput={userInput}

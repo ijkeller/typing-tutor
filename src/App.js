@@ -1,15 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import TypingContainer from './Components/typingContainer';
+import QwertyContainer from './Components/Keyboard/qwertyContainer';
+import './App.css';
+
+/*
 import { Route, Link, Routes, Navigate } from 'react-router-dom';
-import TypingContainer from './components/typingContainer';
 import Nav from './components/nav';
-import QwertyContainer from './components/qwertyContainer';
+*/
 
 function App() {
   return (
     <div className="App">
-      {/* <div className='title'>FST CDR</div> */}
+      <div className='title'>FST CDR</div> 
       {/* <Nav /> */}
-      <TypingContainer />
+      {/* <TypingContainer /> */}
       <QwertyContainer />
     </div>
   );
