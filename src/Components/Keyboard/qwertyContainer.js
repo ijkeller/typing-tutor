@@ -3,18 +3,17 @@ import { line1,
   // line2, line3, line4, line5 
 } from "./qwertyKeys";
 import KeySpan from "./keySpan";
-// import 'keyboard.css'
+import './keyboard.css'
 
 
 function QwertyContainer(props) {
 
-  const KeyLine1 = line1.map((val, index) => {
+  const KeyLine1 = line1.map((val, classN, id, index) => {
     return(
     <KeySpan
-      val={props.val}
-      classN = {props.classN}
-      key={props.index}
-      index={props.index}
+      val={val}
+      classN = {classN}
+      id={id}
     />)
   })
 

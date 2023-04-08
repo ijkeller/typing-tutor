@@ -12,8 +12,10 @@ function App() {
   return (
     <div className="App">
       <div className='title'>FST CDR</div> 
-      {/* <Nav /> */}
-      <TypingContainer />
+      {
+      // <Nav /> 
+      }
+      {/* <TypingContainer /> */}
       <QwertyContainer />
     </div>
   );

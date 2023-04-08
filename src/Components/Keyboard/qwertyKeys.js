@@ -1,6 +1,6 @@
 const line1 = [
   {
-    val: "~ `",
+    val: "~ <br> `",
     classN: "keys tild",
     id: "tild",
   },
@@ -83,9 +83,9 @@ const line2 = [
   "I",
   "O",
   "P",
-  "{ [",
-  "} ]",
-  "| \\",
+  "{ <br> [",
+  "} <br> ]",
+  "| <br> \\",
 ];
 const line3 = [
   "Caps Lock",
@@ -98,8 +98,8 @@ const line3 = [
   "J",
   "K",
   "L",
-  ": ;",
-  "\" '",
+  ": <br> ;",
+  "\" <br> '",
   "Enter",
 ];
 const line4 = [
@@ -111,9 +111,9 @@ const line4 = [
   "B",
   "N",
   "M",
-  "< ,",
-  "> .",
-  "? /",
+  "< <br> ,",
+  "> <br> .",
+  "? <br> /",
   "Shift",
 ];
 const line5 = ["Ctrl", "Fn", "Alt", "Space", "Alt", "Ctrl"];
