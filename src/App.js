@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <div className='title'>FST CDR</div> 
       {/* <Nav /> */}
-      {/* <TypingContainer /> */}
+      <TypingContainer />
       <QwertyContainer />
     </div>
   );

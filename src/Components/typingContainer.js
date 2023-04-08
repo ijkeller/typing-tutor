@@ -1,117 +1,127 @@
-import React, { useState, useEffect } from 'react';
-import { jsSubString } from './jsSnippet';
-import Stats from './stats';
-import Span from './span';
-
+import React, { useState, useEffect } from "react";
+import { jsSubString } from "./jsSnippet";
+import Stats from "./stats";
+import Span from "./span";
 
 function TypingContainer() {
+  // useState for snippet and user input
+  const [currentSnippet, setCurrentSnippet] = useState(jsSubString);
+  const [userInput, setUserInput] = useState("");
+  const [userActive, setUserActive] = useState(false);
+  const [resetTimer, setResetTimer] = useState(false);
+  const [errorCounter, setErrorCounter] = useState(0);
 
-    // useState for snippet and user input
-    const [currentSnippet, setCurrentSnippet] = useState(jsSubString)
-    const [userInput, setUserInput] = useState('')
-    const [userActive, setUserActive] = useState(false)
-    const [resetTimer, setResetTimer] = useState(false)
-    const [errorCounter, setErrorCounter] = useState(0)
+  // convert current snippet
+  const snippetObject = currentSnippet.split("");
 
-    // convert current snippet
-    const snippetObject = currentSnippet.split('')
+  // display snippet in separate spans
+  const displaySnippet = snippetObject.map((snippet, index) => (
+    <Span
+      userInput={userInput}
+      key={index}
+      index={index}
+      snippetCharacter={snippet}
+    />
+  ));
 
+  console.log("resetTimer is " + resetTimer);
 
-    // display snippet in separate spans
-    const displaySnippet = snippetObject.map((snippet, index) => (
-        <Span
-            userInput={userInput}
-            key={index}
-            index={index}
-            snippetCharacter={snippet}
-        />
-    ))
+  const chrTyped = userInput.length;
+  const validChar = currentSnippet.slice(0, chrTyped);
 
-    console.log('resetTimer is ' + resetTimer)
+  // function errorHandler() {
 
-    const chrTyped = userInput.length
-    const validChar = currentSnippet.slice(0, chrTyped)
+  //     for (let i = 0; i < snippetObject.length; i++) {
 
-    // function errorHandler() {
+  //         if (validChar[i] != userInput[i]) {
 
-    //     for (let i = 0; i < snippetObject.length; i++) {
+  //             setErrorCounter(errorCounter + 1)
 
-    //         if (validChar[i] != userInput[i]) {
+  //         } else {
+  //             console.log('returned false')
+  //         }
+  //     }
+  // }
 
-    //             setErrorCounter(errorCounter + 1)
+  const boolInput = userInput[0] !== undefined;
 
-    //         } else {
-    //             console.log('returned false')
-    //         }
-    //     }
-    // }
+  // const onFocus = () => {
 
+  //     if (boolInput) {
+  //         console.log('if statement returns true')
+  //         userActive = true
+  //         console.log('userActive is ' + userActive)
+  //     } else {
+  //         console.log('onFocus, but no input')
+  //     }
+  // }
 
-    const boolInput = (userInput[0] != undefined)
+  const onFocus = () => setUserActive(true);
+  const onBlur = () => setUserActive(false);
 
-    // const onFocus = () => {
+  // console.log('userActive is ' + userActive)
 
-    //     if (boolInput) {
-    //         console.log('if statement returns true')
-    //         userActive = true
-    //         console.log('userActive is ' + userActive)
-    //     } else {
-    //         console.log('onFocus, but no input')
-    //     }
-    // }
+  const handleChange = (e) => {
+    setUserInput(e.target.value);
+    // errorHandler()
 
-    const onFocus = () => setUserActive(true)
-    const onBlur = () => setUserActive(false)
+    // if (userInput.length == currentSnippet.length)
 
-    // console.log('userActive is ' + userActive)
+    //     return (
 
+    //         setResetTimer(true),
+    //         setUserActive(false),
+    //         setUserInput(''),
+    //         setCurrentSnippet(''),
+    //         setCurrentSnippet(jsSubString)
+    //     )
+  };
 
-    const handleChange = (e) => {
+  useEffect(() => {
+    setCurrentSnippet(jsSubString);
+  }, [jsSubString]);
 
-        setUserInput(e.target.value)
-        // errorHandler()
+  function reset() {
+    return setResetTimer(true), setUserActive(false), setUserInput("");
+  }
 
+  console.log("---------------");
 
-        // if (userInput.length == currentSnippet.length)
+  return (
+    <div className="card" id="typing-container">
+      <Stats
+        userActive={userActive}
+        reset={resetTimer}
+        chrTyped={chrTyped}
+        errorCounter={errorCounter}
+      />
+      <div className="snippet" id="snippet">
+        {" "}
+        {displaySnippet}{" "}
+      </div>
 
-        //     return (
-
-        //         setResetTimer(true),
-        //         setUserActive(false),
-        //         setUserInput(''),
-        //         setCurrentSnippet(''),
-        //         setCurrentSnippet(jsSubString)
-        //     )
-    }
-
-
-    useEffect(() => {
-        setCurrentSnippet(jsSubString);
-    }, [jsSubString])
-
-    function reset() {
-        return (
-            setResetTimer(true),
-            setUserActive(false),
-            setUserInput('')
-            
-            
-        )
-    }
-
-    console.log('---------------')
-
-    return (
-
-        <div className="card" id="typing-container">
-            <Stats userActive={userActive} reset={resetTimer} chrTyped={chrTyped} errorCounter={errorCounter} />
-            <div className="snippet" id="snippet"> {displaySnippet} </div>
-
-            <textarea className="user-input" id="userInput" spellCheck="false" placeholder='Start Typing...' onChange={handleChange} onFocus={onFocus} onBlur={onBlur} value={userInput}></textarea>
-            <button className='reset' id='reset' onClick={() => { setUserActive(false); reset(); }}>Reset</button>
-        </div>
-
-    )
+      <textarea
+        className="user-input"
+        id="userInput"
+        spellCheck="false"
+        placeholder="Start Typing..."
+        onChange={handleChange}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        value={userInput}
+      ></textarea>
+      <button
+        className="reset"
+        id="reset"
+        onClick={() => {
+          setUserActive(false);
+          reset();
+        }}
+      >
+        Reset
+      </button>
+    </div>
+  );
 }
 
 export default TypingContainer;

@@ -6,9 +6,9 @@ function KeySpan(props) {
 
     return (
             <li
-                className='keys'
+                className={props.classN}
                 id={identifier}>
-                {props.value}
+                {props.val}
             </li>
     )
 }

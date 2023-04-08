@@ -1,59 +1,62 @@
 import React from "react";
-import { line1, line2, line3, line4, line5 } from "./qwertyKeys";
+import { line1, 
+  // line2, line3, line4, line5 
+} from "./qwertyKeys";
 import KeySpan from "./keySpan";
+// import 'keyboard.css'
 
 
-function QwertyContainer() {
+function QwertyContainer(props) {
 
-  const KeyLine1 = line1.map((value, index) => {
+  const KeyLine1 = line1.map((val, index) => {
     return(
     <KeySpan
-      line={'l1-'}
-      value={value}
-      key={index}
-      index={index}
+      val={props.val}
+      classN = {props.classN}
+      key={props.index}
+      index={props.index}
     />)
   })
 
-  const KeyLine2 = line2.map((value, index) => {
-    return(
-    <KeySpan
-      line={'l2-'}
-      value={value}
-      key={index}
-      index={index}
-    />)
-  })
+  // const KeyLine2 = line2.map((value, index) => {
+  //   return(
+  //   <KeySpan
+  //     line={'l2-'}
+  //     value={value}
+  //     key={index}
+  //     index={index}
+  //   />)
+  // })
 
-  const KeyLine3 = line3.map((value, index) => {
-    return(
-    <KeySpan
-      line={'l3-'}
-      value={value}
-      key={index}
-      index={index}
-    />)
-  })
+  // const KeyLine3 = line3.map((value, index) => {
+  //   return(
+  //   <KeySpan
+  //     line={'l3-'}
+  //     value={value}
+  //     key={index}
+  //     index={index}
+  //   />)
+  // })
 
-  const KeyLine4 = line4.map((value, index) => {
-    return(
-    <KeySpan
-      line={'l4-'}
-      value={value}
-      key={index}
-      index={index}
-    />)
-  })
+  // const KeyLine4 = line4.map((value, index) => {
+  //   return(
+  //   <KeySpan
+  //     line={'l4-'}
+  //     value={value}
+  //     key={index}
+  //     index={index}
+  //   />)
+  // })
 
-  const KeyLine5 = line5.map((value, index) => {
-    return(
-    <KeySpan
-      line={'l5-'}
-      value={value}
-      key={index}
-      index={index}
-    />)
-  })
+  // const KeyLine5 = line5.map((value, index) => {
+  //   return(
+  //   <KeySpan
+  //     line={'l5-'}
+  //     value={value}
+  //     key={index}
+  //     index={index}
+  //   />)
+  // })
 
 
 
@@ -62,6 +65,9 @@ function QwertyContainer() {
 
   return (
     <div className="card" id="qwerty-container">
+      <ul className="rows row-1">
+        {KeyLine1}
+      </ul>
       {/* <div className="keyboard" id="keyboard">
         <ul className="kl1 kl">{KeyLine1}</ul>
         <ul className="kl2 kl">{KeyLine2}</ul>
